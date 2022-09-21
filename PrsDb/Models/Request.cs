@@ -30,7 +30,7 @@ namespace PrsDb.Models
         public int UserId { get; set; }
         public virtual User? User { get; set; }
 
-        [JsonIgnore]
-        public virtual IEnumerable<RequestLine?> RequestLines { get; set; }
+        public virtual IEnumerable<RequestLine>? RequestLines { get; set; }
+
     }
 }

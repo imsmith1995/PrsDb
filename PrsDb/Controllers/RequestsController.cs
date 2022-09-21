@@ -28,14 +28,20 @@ namespace PrsDb.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Request>>> GetRequest()
         {
-            return await _context.Requests.ToListAsync();
+            return await _context.Requests
+                                       .Include(x => x.User)
+                                       .ToListAsync();
         }
 
         // GET: api/Requests/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Request>> GetRequest(int id)
         {
-            var request = await _context.Requests.FindAsync(id);
+            var request = await _context.Requests
+                                              .Include(x => x.User)
+                                              .Include(x => x.RequestLines)
+                                              .ThenInclude(x => x.Product)
+                                              .SingleOrDefaultAsync(x => x.Id == id);
 
             if (request == null)
             {
@@ -43,6 +49,15 @@ namespace PrsDb.Controllers
             }
 
             return request;
+        }
+
+        //GET: api/requests/reviews/{userId}
+        [HttpGet("reviews/{userId}")]
+        public async Task<ActionResult<IEnumerable<Request>>> GetReviews(int userId)
+        {
+            return await _context.Requests
+                                    .Where(x => x.UserId != userId && x.Status == REVIEW)
+                                    .ToListAsync();
         }
 
         // PUT: api/Requests/5
@@ -56,6 +71,7 @@ namespace PrsDb.Controllers
             }
 
             _context.Entry(request).State = EntityState.Modified;
+            
 
             try
             {
@@ -76,38 +92,35 @@ namespace PrsDb.Controllers
             return NoContent();
         }
 
-        //PUT: api/requests/review/5
+        //PUT: api/Requests/review/5
         [HttpPut("review/{id}")]
         public async Task<IActionResult> Review(int id, Request request)
         {
-            if (id != request.Id)
-            {
-                return BadRequest();
-            }
-            if (request.Total <= 50)
-            {
-                request.Status = APPROVED;
-            }
-            request.Status = REVIEW;
-            _context.Entry(request).State = EntityState.Modified;
+            request.Status = (request.Total <= 50) ? APPROVED : REVIEW;
 
-            try
+            return await PutRequest(id, request);
+        }
+
+        //PUT: api/Requests/approve/5
+        [HttpPut("approve/{id}")]
+        public async Task<IActionResult> Approve(int id, Request request)
+        {
+            request.Status = APPROVED;
+
+            return await PutRequest(id, request);
+        }
+
+        //PUT: api/Requests/reject/5
+        [HttpPut("reject/{id}")]
+        public async Task<IActionResult> Reject(int id, Request request)
+        {
+            if (request.RejectionReason is null)
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!RequestExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                throw new Exception("A Rejection Reason must be given when Rejecting a Request...");
             }
 
-            return NoContent();
+            request.Status = REJECTED;
+            return await PutRequest(id, request);
         }
 
         // POST: api/Requests
