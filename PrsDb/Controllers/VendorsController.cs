@@ -13,6 +13,10 @@ namespace PrsDb.Controllers
     [ApiController]
     public class VendorsController : ControllerBase
     {
+        public static string REVIEW = "REVIEW";
+        public static string APPROVED = "APPROVED";
+        public static string REJECTED = "REJECTED";
+
         private readonly AppDbContext _context;
 
         public VendorsController(AppDbContext context)
@@ -39,6 +43,54 @@ namespace PrsDb.Controllers
             }
 
             return vendor;
+        }
+
+        //GET: api/vendors/po/5
+        [HttpGet("po/{vendorId}")]
+        public async Task<ActionResult<Po>> CreatePo(int vendorId)
+        {
+            var po = new Po();
+            po.Vendor = await _context.Vendors.FindAsync(vendorId);
+            if (po.Vendor == null)
+            {
+                return NotFound();
+            }
+
+            var lines = from v in _context.Vendors
+                         join p in _context.Products
+                         on v.Id equals p.VendorId
+                         join rl in _context.RequestLines
+                         on p.Id equals rl.ProductId
+                         join r in _context.Requests
+                         on rl.RequestId equals r.Id
+                         where r.Status == APPROVED
+                         select new
+                         {
+                             p.Id, 
+                             Product = p.Name,
+                             rl.Quantity,
+                             p.Price,
+                             LineTotal = p.Price * rl.Quantity
+                         };
+            var sortedLines = new SortedList<int, Poline>();
+            foreach (var line in lines)
+            {
+                if (!sortedLines.ContainsKey(line.Id))
+                {
+                    var poline = new Poline()
+                    {
+                        Product = line.Product,
+                        Quantity = 0,
+                        Price = line.Price,
+                        LineTotal = line.LineTotal
+                    };
+                    sortedLines.Add(line.Id, poline);
+                }
+                sortedLines[line.Id].Quantity += line.Quantity;
+            }
+            po.Polines = sortedLines.Values;
+            po.PoTotal = po.Polines.Sum(x => x.LineTotal);
+            return po;
         }
 
         // PUT: api/Vendors/5
