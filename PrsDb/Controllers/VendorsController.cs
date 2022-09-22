@@ -63,7 +63,7 @@ namespace PrsDb.Controllers
                          on p.Id equals rl.ProductId
                          join r in _context.Requests
                          on rl.RequestId equals r.Id
-                         where r.Status == APPROVED
+                         where r.Status == APPROVED && v.Id == vendorId
                          select new
                          {
                              p.Id, 
