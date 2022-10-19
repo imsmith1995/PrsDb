@@ -5,11 +5,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+var connStrKey = "ProdDb";
+#if DEBUG
+    connStrKey = "Dev";
+#endif
+
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<AppDbContext>(x =>
 {
-    x.UseSqlServer(builder.Configuration.GetConnectionString("Dev"));
+    x.UseSqlServer(builder.Configuration.GetConnectionString(connStrKey));
 });
 builder.Services.AddCors();
 

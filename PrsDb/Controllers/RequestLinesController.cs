@@ -103,6 +103,7 @@ namespace PrsDb.Controllers
             return NoContent();
         }
 
+        //RecalculateRequestTotal is only ever called by Requestline Methods 
         private async Task<IActionResult> RecalculateRequestTotal(int requestId)
         {
             var request = await _context.Requests.FindAsync(requestId);
