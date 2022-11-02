@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,6 +14,13 @@ import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { UserCreateComponent } from './user/user-create/user-create.component';
 import { UserChangeComponent } from './user/user-change/user-change.component';
 import { HeadComponent } from './common/head/head.component';
+import { FootComponent } from './common/foot/foot.component';
+import { UserLoginComponent } from './user/user-login/user-login.component';
+import { AppInitService } from './app-init.service';
+
+export function startupServiceFactory(appInit: AppInitService) : Function {
+  return () => appInit.getSettings();
+}
 
 @NgModule({
   declarations: [
@@ -26,7 +33,9 @@ import { HeadComponent } from './common/head/head.component';
     UserListComponent,
     UserDetailComponent,
     UserCreateComponent,
-    UserChangeComponent
+    UserChangeComponent,
+    FootComponent,
+    UserLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +43,14 @@ import { HeadComponent } from './common/head/head.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    AppInitService, {
+      provide: APP_INITIALIZER,
+      useFactory: startupServiceFactory,
+        deps: [AppInitService],
+        multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

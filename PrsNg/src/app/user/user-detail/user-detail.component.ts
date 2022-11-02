@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { SystemService } from 'src/app/common/system.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -7,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserDetailComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private sys: SystemService,
+    private usersvc: UserService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
