@@ -18,6 +18,10 @@ import { FootComponent } from './common/foot/foot.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { AppInitService } from './app-init.service';
 import { BoolDisplayPipe } from './common/bool-display.pipe';
+import { VendorListComponent } from './vendor/vendor-list/vendor-list.component';
+import { VendorDetailComponent } from './vendor/vendor-detail/vendor-detail.component';
+import { VendorCreateComponent } from './vendor/vendor-create/vendor-create.component';
+import { VendorChangeComponent } from './vendor/vendor-change/vendor-change.component';
 
 export function startupServiceFactory(appInit: AppInitService) : Function {
   return () => appInit.getSettings();
@@ -37,7 +41,11 @@ export function startupServiceFactory(appInit: AppInitService) : Function {
     UserChangeComponent,
     FootComponent,
     UserLoginComponent,
-    BoolDisplayPipe
+    BoolDisplayPipe,
+    VendorListComponent,
+    VendorDetailComponent,
+    VendorCreateComponent,
+    VendorChangeComponent,
   ],
   imports: [
     BrowserModule,
