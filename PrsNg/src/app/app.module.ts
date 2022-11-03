@@ -17,6 +17,7 @@ import { HeadComponent } from './common/head/head.component';
 import { FootComponent } from './common/foot/foot.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { AppInitService } from './app-init.service';
+import { BoolDisplayPipe } from './common/bool-display.pipe';
 
 export function startupServiceFactory(appInit: AppInitService) : Function {
   return () => appInit.getSettings();
@@ -35,7 +36,8 @@ export function startupServiceFactory(appInit: AppInitService) : Function {
     UserCreateComponent,
     UserChangeComponent,
     FootComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    BoolDisplayPipe
   ],
   imports: [
     BrowserModule,

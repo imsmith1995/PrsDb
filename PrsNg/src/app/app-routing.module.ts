@@ -12,7 +12,7 @@ import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserCreateComponent } from './user/user-create/user-create.component';
 
 const routes: Routes = [
-  { path:"", redirectTo:"/user/list", pathMatch:"full"},
+  { path:"", redirectTo:"/user/login", pathMatch:"full"},
 
   { path:"user/login", component: UserLoginComponent},
   { path:"user/list", component: UserListComponent},
