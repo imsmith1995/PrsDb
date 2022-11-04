@@ -13,7 +13,6 @@ export class UserCreateComponent implements OnInit {
 
   pageTitle: string = "User Creator";
   user: User = new User();
-  dbusernames: User[] = [];
 
   constructor(
     private sys: SystemService,

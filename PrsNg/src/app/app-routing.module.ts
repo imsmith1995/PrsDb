@@ -10,6 +10,10 @@ import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { UserChangeComponent } from './user/user-change/user-change.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserCreateComponent } from './user/user-create/user-create.component';
+import { VendorListComponent } from './vendor/vendor-list/vendor-list.component';
+import { VendorCreateComponent } from './vendor/vendor-create/vendor-create.component';
+import { VendorChangeComponent } from './vendor/vendor-change/vendor-change.component';
+import { VendorDetailComponent } from './vendor/vendor-detail/vendor-detail.component';
 
 const routes: Routes = [
   { path:"", redirectTo:"/user/login", pathMatch:"full"},
@@ -19,6 +23,11 @@ const routes: Routes = [
   { path:"user/create", component: UserCreateComponent},
   { path:"user/detail/:id", component:UserDetailComponent},
   { path:"user/change/:id", component: UserChangeComponent},
+
+  { path:"vendor/list", component: VendorListComponent},
+  { path:"vendor/create", component: VendorCreateComponent},
+  { path:"vendor/detail/:id", component: VendorDetailComponent},
+  { path:"vendor/change/:id", component: VendorChangeComponent},
 
   { path:"home", component: HomeComponent},
   { path:"about", component: AboutComponent},

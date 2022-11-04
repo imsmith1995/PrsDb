@@ -10,7 +10,7 @@ import { UserService } from '../user.service';
 })
 export class UserListComponent implements OnInit {
 
-  pageTitle:string = "Users";
+  pageTitle:string = "User List";
   users: User[] = [];
 
   constructor(
