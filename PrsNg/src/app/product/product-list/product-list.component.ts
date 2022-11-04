@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { SystemService } from 'src/app/common/system.service';
+import { Vendor } from 'src/app/vendor/vendor.class';
+import { VendorService } from 'src/app/vendor/vendor.service';
+import { Product } from '../product.class';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -7,9 +12,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductListComponent implements OnInit {
 
-  constructor() { }
+  pageTitle: string = "Product List";
+  prods: Product[] = [];
+  vens: Vendor[] = [];
 
-  ngOnInit(): void {
+  constructor(
+    private sys: SystemService,
+    private prodsvc: ProductService,
+    private vensvc: VendorService
+  ) { }
+
+    ngOnInit(): void {
+    this.prodsvc.list().subscribe({
+      next: (res) => {
+        console.debug("Products: ", res);
+        this.prods = res;
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
+
   }
 
 }
