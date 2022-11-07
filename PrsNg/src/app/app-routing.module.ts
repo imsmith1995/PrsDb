@@ -10,14 +10,21 @@ import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { UserChangeComponent } from './user/user-change/user-change.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserCreateComponent } from './user/user-create/user-create.component';
+
 import { VendorListComponent } from './vendor/vendor-list/vendor-list.component';
 import { VendorCreateComponent } from './vendor/vendor-create/vendor-create.component';
 import { VendorChangeComponent } from './vendor/vendor-change/vendor-change.component';
 import { VendorDetailComponent } from './vendor/vendor-detail/vendor-detail.component';
+
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { ProductCreateComponent } from './product/product-create/product-create.component';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 import { ProductChangeComponent } from './product/product-change/product-change.component';
+
+import { RequestListComponent } from './request/request-list/request-list.component';
+import { RequestCreateComponent } from './request/request-create/request-create.component';
+import { RequestDetailComponent } from './request/request-detail/request-detail.component';
+import { RequestChangeComponent } from './request/request-change/request-change.component';
 
 const routes: Routes = [
   { path:"", redirectTo:"/user/login", pathMatch:"full"},
@@ -37,6 +44,11 @@ const routes: Routes = [
   { path:"product/create", component: ProductCreateComponent},
   { path:"product/detail/:id", component: ProductDetailComponent},
   { path:"product/change/:id", component: ProductChangeComponent},
+
+  { path:"request/list", component: RequestListComponent},
+  { path:"request/create", component: RequestCreateComponent},
+  { path:"request/detail/:id", component: RequestDetailComponent},
+  { path:"request/change/:id", component: RequestChangeComponent},
 
   { path:"home", component: HomeComponent},
   { path:"about", component: AboutComponent},

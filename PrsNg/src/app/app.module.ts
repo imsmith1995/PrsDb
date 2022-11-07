@@ -27,6 +27,11 @@ import { ProductListComponent } from './product/product-list/product-list.compon
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 import { ProductCreateComponent } from './product/product-create/product-create.component';
 import { ProductChangeComponent } from './product/product-change/product-change.component';
+import { RequestListComponent } from './request/request-list/request-list.component';
+import { RequestDetailComponent } from './request/request-detail/request-detail.component';
+import { RequestCreateComponent } from './request/request-create/request-create.component';
+import { RequestChangeComponent } from './request/request-change/request-change.component';
+import { RejectionPipe } from './request/rejection.pipe';
 
 export function startupServiceFactory(appInit: AppInitService) : Function {
   return () => appInit.getSettings();
@@ -55,6 +60,11 @@ export function startupServiceFactory(appInit: AppInitService) : Function {
     ProductDetailComponent,
     ProductCreateComponent,
     ProductChangeComponent,
+    RequestListComponent,
+    RequestDetailComponent,
+    RequestCreateComponent,
+    RequestChangeComponent,
+    RejectionPipe,
   ],
   imports: [
     BrowserModule,
