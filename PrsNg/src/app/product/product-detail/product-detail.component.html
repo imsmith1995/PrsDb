@@ -38,7 +38,7 @@
         </table>
         <button (click)="toProductChangePage()" class="btn btn-primary">Edit</button> |
         <button (click)="toggleVerifyDelete()" class="btn btn-danger">Delete</button> |
-        <button class="{{verifyDeleteButtonColor}}" [disabled]="verifyDeleteButton">Verify Delete</button>
+        <button (click)="remove()" class="{{verifyDeleteButtonColor}}" [disabled]="verifyDeleteButton">Verify Delete</button>
     </main>
 
     <div>

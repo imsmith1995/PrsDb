@@ -27,7 +27,7 @@ export class ProductChangeComponent implements OnInit {
   ) { }
 
   save(): void {
-    this.populateVendor();
+    this.prod.vendorId = + this.prod.vendorId;
     this.prodsvc.change(this.prod).subscribe({
       next: (res) => {
         console.debug("Changes to Product Saved!");
@@ -40,6 +40,7 @@ export class ProductChangeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getAllVendors();
     let id = this.route.snapshot.params["id"];
     this.prodsvc.get(id).subscribe({
       next: (res) => {
@@ -50,7 +51,6 @@ export class ProductChangeComponent implements OnInit {
         console.error(err);
       }
     });
-    this.getAllVendors();
   }
 
   getAllVendors(): void {
@@ -63,15 +63,6 @@ export class ProductChangeComponent implements OnInit {
         console.error(err);
       }
     });
-  }
-
-  populateVendor(): void {
-    for(let v of this.vens){
-      if(this.prod.vendor.name === v.name){
-        this.prod.vendor = v;
-        this.prod.vendorId = v.id
-      }
-    }
   }
 
 }

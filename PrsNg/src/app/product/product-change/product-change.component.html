@@ -33,8 +33,8 @@
                 <tr>
                     <td>Vendor</td>
                     <td>
-                        <select *ngIf="prod" [(ngModel)]="prod.vendor.name">
-                            <option *ngFor="let v of vens">{{v.name}}</option>
+                        <select [(ngModel)]="prod.vendorId">
+                            <option value="{{v.id}}" *ngFor="let v of vens">{{v.name}}</option>
                         </select>
                     </td>
                 </tr>
