@@ -16,6 +16,8 @@ export class ProductDetailComponent implements OnInit {
   pageTitle: string = "Product Detail";
   prod!: Product;
   ven!: Vendor;
+  verifyDeleteButton: boolean = true;
+  verifyDeleteButtonColor: string = "btn btn-secondary";
 
   constructor(
     private sys: SystemService,
@@ -24,6 +26,27 @@ export class ProductDetailComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) { }
+
+  toProductChangePage(): void {
+    this.router.navigateByUrl(`/product/change/${this.prod.id}`);
+  }
+
+  toggleVerifyDelete(): void {
+    this.verifyDeleteButton = !this.verifyDeleteButton;
+    this.verifyDeleteButtonColor = this.verifyDeleteButton ? "btn btn-secondary" : "btn btn-danger";
+  }
+
+  remove(): void {
+    this.prodsvc.remove(this.prod.id).subscribe({
+      next: (res) => {
+        console.debug("Product Deleted!", res)
+        this.router.navigateByUrl("/product/list");
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
+  }
 
   ngOnInit(): void {
     let id = this.route.snapshot.params["id"];
