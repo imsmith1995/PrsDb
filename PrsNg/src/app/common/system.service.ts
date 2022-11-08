@@ -16,9 +16,9 @@ export class SystemService {
     private router: Router
   ) { }
 
-  // checkLogin(): void {
-  //   if(this.user === null) {
-  //     this.router.navigateByUrl("/user/login");
-  //   }
-  // }
+  checkLogin(): void {
+    if(this.user === null) {
+      this.router.navigateByUrl("/user/login");
+    }
+  }
 }

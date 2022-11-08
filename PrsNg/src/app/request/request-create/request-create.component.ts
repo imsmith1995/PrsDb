@@ -14,6 +14,7 @@ export class RequestCreateComponent implements OnInit {
 
   pageTitle: string = "Request Creator";
   req: Request = new Request();
+  user: User = this.sys.user;
 
   constructor(
     private sys: SystemService,
@@ -22,6 +23,7 @@ export class RequestCreateComponent implements OnInit {
   ) { }
 
   save(): void {
+    this.req.userId = +this.user.id;
     this.reqsvc.create(this.req).subscribe({
       next: (res) => {
         console.debug("Request Created!");
@@ -34,5 +36,7 @@ export class RequestCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.sys.checkLogin();
+    this.req.userId = this.sys.user.id;
   }
 }

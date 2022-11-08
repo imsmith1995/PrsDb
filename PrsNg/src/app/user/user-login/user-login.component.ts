@@ -25,6 +25,7 @@ export class UserLoginComponent implements OnInit {
     this.usersvc.login(this.username, this.password).subscribe({
       next: (res) => {
         console.debug("User:", res);
+        this.sys.user = res;
         this.router.navigateByUrl("/user/list");
       },
       error: (err) => {
