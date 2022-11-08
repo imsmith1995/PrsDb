@@ -1,11 +1,11 @@
 import { Product } from "../product/product.class";
 import { Request } from "../request/request.class";
 
-export class Requestline {
+export class RequestLine {
     id: number = 0;
     requestId: number = 0;
     request: Request = null!
     productId: number = 0;
     product: Product = null!
-    quantity: number = 0;
+    quantity: number = 1;
 }

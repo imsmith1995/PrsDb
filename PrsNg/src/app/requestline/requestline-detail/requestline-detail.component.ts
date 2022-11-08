@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './requestline-detail.component.html',
   styleUrls: ['./requestline-detail.component.css']
 })
-export class RequestlineDetailComponent implements OnInit {
+export class RequestLineDetailComponent implements OnInit {
 
   constructor() { }
 
