@@ -30,6 +30,7 @@ namespace PrsDb.Controllers
         {
             return await _context.Requests
                                        .Include(x => x.User)
+                                       .Include(x => x.RequestLines)
                                        .ToListAsync();
         }
 
@@ -57,6 +58,8 @@ namespace PrsDb.Controllers
         {
             return await _context.Requests
                                     .Where(x => x.UserId != userId && x.Status == REVIEW)
+                                    .Include(x => x.User)
+                                    .Include(x => x.RequestLines)
                                     .ToListAsync();
         }
 

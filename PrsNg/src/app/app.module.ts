@@ -36,6 +36,8 @@ import { RequestLineListComponent } from './requestline/requestline-list/request
 import { RequestLineDetailComponent } from './requestline/requestline-detail/requestline-detail.component';
 import { RequestLineCreateComponent } from './requestline/requestline-create/requestline-create.component';
 import { RequestLineChangeComponent } from './requestline/requestline-change/requestline-change.component';
+import { RequestReviewComponent } from './request/request-review-list/request-review.component';
+import { RequestReviewDetailComponent } from './request/request-review-detail/request-review-detail.component';
 
 export function startupServiceFactory(appInit: AppInitService) : Function {
   return () => appInit.getSettings();
@@ -73,6 +75,8 @@ export function startupServiceFactory(appInit: AppInitService) : Function {
     RequestLineDetailComponent,
     RequestLineCreateComponent,
     RequestLineChangeComponent,
+    RequestReviewComponent,
+    RequestReviewDetailComponent,
   ],
   imports: [
     BrowserModule,

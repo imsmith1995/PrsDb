@@ -26,6 +26,18 @@ export class RequestLineListComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
+  reviewRequest(): void {
+    this.reqsvc.review(this.req).subscribe({
+      next: (res) => {
+        console.debug("Request Status Changed!");
+        this.refresh();
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
+  }
+
   remove(id: number): void {
     this.reqlnsvc.remove(id).subscribe({
       next: (res) => {

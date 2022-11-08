@@ -14,12 +14,10 @@ export class ProductListComponent implements OnInit {
 
   pageTitle: string = "Product List";
   prods: Product[] = [];
-  vens: Vendor[] = [];
 
   constructor(
     private sys: SystemService,
     private prodsvc: ProductService,
-    private vensvc: VendorService
   ) { }
 
     ngOnInit(): void {

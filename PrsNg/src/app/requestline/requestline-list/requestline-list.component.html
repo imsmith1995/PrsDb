@@ -26,8 +26,7 @@
                         <td>{{req.total |currency}}</td>
                         <td>{{req.user.username}}</td>
                         <td>
-                            <a routerLink="request/list">Submit For Review</a>
-                            <!-- replace link with request/reviews when created -->
+                            <button (click)="reviewRequest()" id="actionButton">Submit For Review</button>
                         </td>
                     </tr>
                 </tbody>
@@ -57,7 +56,7 @@
                         <td>{{rq.quantity * rq.product.price |currency}}</td>
                         <td>
                             <a routerLink="/requestline/change/{{rq.id}}">Edit</a> |
-                            <button (click)="remove(rq.id)" id="deleteButton">Delete</button>
+                            <button (click)="remove(rq.id)" id="actionButton">Delete</button>
                         </td>
                     </tr>
                 </tbody>
