@@ -32,6 +32,10 @@ import { RequestDetailComponent } from './request/request-detail/request-detail.
 import { RequestCreateComponent } from './request/request-create/request-create.component';
 import { RequestChangeComponent } from './request/request-change/request-change.component';
 import { RejectionPipe } from './request/rejection.pipe';
+import { RequestlineListComponent } from './requestline/requestline-list/requestline-list.component';
+import { RequestlineDetailComponent } from './requestline/requestline-detail/requestline-detail.component';
+import { RequestlineCreateComponent } from './requestline/requestline-create/requestline-create.component';
+import { RequestlineChangeComponent } from './requestline/requestline-change/requestline-change.component';
 
 export function startupServiceFactory(appInit: AppInitService) : Function {
   return () => appInit.getSettings();
@@ -65,6 +69,10 @@ export function startupServiceFactory(appInit: AppInitService) : Function {
     RequestCreateComponent,
     RequestChangeComponent,
     RejectionPipe,
+    RequestlineListComponent,
+    RequestlineDetailComponent,
+    RequestlineCreateComponent,
+    RequestlineChangeComponent,
   ],
   imports: [
     BrowserModule,

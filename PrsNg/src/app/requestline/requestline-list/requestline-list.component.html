@@ -1,0 +1,68 @@
+<div id="component">
+    <div>
+        <app-head [pageTitle]="pageTitle"></app-head>
+    </div>
+
+    <main id="main">
+        <div id="request">
+            <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Description</th>
+                        <th>Rejection Reason</th>
+                        <th> Status</th>
+                        <th>Total</th>
+                        <th>Username</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="req">
+                    <tr>
+                        <td>{{req.id}}</td>
+                        <td>{{req.description}}</td>
+                        <td>{{req.rejectionReason}}</td>
+                        <td>{{req.status}}</td>
+                        <td>{{req.total}}</td>
+                        <td>{{req.user.username}}</td>
+                        <td>
+                            <a routerLink="request/list">Submit For Review</a>
+                            <!-- replace link with request/reviews when created -->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+        </div>
+
+        <div id="requestLines">
+            <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Line Total</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="reqlns">
+                    <tr *ngFor="let rq of reqlns">
+                        <td>{{rq.id}}</td>
+                        <td>{{rq.product.name}}</td>
+                        <td>{{rq.product.price}}</td>
+                        <td>{{rq.quantity}}</td>
+                        <td>{{rq.quantity * rq.product.price}}</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <div>
+        <app-foot></app-foot>
+    </div>
+</div>

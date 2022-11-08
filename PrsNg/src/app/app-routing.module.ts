@@ -25,6 +25,9 @@ import { RequestListComponent } from './request/request-list/request-list.compon
 import { RequestCreateComponent } from './request/request-create/request-create.component';
 import { RequestDetailComponent } from './request/request-detail/request-detail.component';
 import { RequestChangeComponent } from './request/request-change/request-change.component';
+import { RequestlineListComponent } from './requestline/requestline-list/requestline-list.component';
+import { RequestlineCreateComponent } from './requestline/requestline-create/requestline-create.component';
+import { RequestlineChangeComponent } from './requestline/requestline-change/requestline-change.component';
 
 const routes: Routes = [
   { path:"", redirectTo:"/user/login", pathMatch:"full"},
@@ -49,6 +52,10 @@ const routes: Routes = [
   { path:"request/create", component: RequestCreateComponent},
   { path:"request/detail/:id", component: RequestDetailComponent},
   { path:"request/change/:id", component: RequestChangeComponent},
+
+  { path:"requestline/list/:id", component: RequestlineListComponent},
+  { path:"requestline/create/:id", component: RequestlineCreateComponent},
+  { path:"requestline/change/:id", component: RequestlineChangeComponent},
 
   { path:"home", component: HomeComponent},
   { path:"about", component: AboutComponent},
