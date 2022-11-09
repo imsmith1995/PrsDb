@@ -20,7 +20,7 @@
                 </tr>
                 <tr>
                     <td>Price</td>
-                    <td><input [(ngModel)]="prod.price" type="number"></td>
+                    <td><input [(ngModel)]="prod.price" min="1" type="number" oninput="validity.valid||(value='');"></td>
                 </tr>
                 <tr>
                     <td>Unit</td>
