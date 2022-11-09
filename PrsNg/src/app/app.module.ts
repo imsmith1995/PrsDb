@@ -38,6 +38,7 @@ import { RequestLineCreateComponent } from './requestline/requestline-create/req
 import { RequestLineChangeComponent } from './requestline/requestline-change/requestline-change.component';
 import { RequestReviewComponent } from './request/request-review-list/request-review.component';
 import { RequestReviewDetailComponent } from './request/request-review-detail/request-review-detail.component';
+import { VendorPoComponent } from './vendor/vendor-po/vendor-po.component';
 
 export function startupServiceFactory(appInit: AppInitService) : Function {
   return () => appInit.getSettings();
@@ -77,6 +78,7 @@ export function startupServiceFactory(appInit: AppInitService) : Function {
     RequestLineChangeComponent,
     RequestReviewComponent,
     RequestReviewDetailComponent,
+    VendorPoComponent,
   ],
   imports: [
     BrowserModule,

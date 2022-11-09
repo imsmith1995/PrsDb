@@ -1,0 +1,58 @@
+<div id="component">
+    <div>
+        <app-head [pageTitle]="pageTitle"></app-head>
+    </div>
+
+    <main id="main">
+        <a routerLink="/vendor/list">Back to Vendors</a>
+        <div id="vendor">
+            <table class="table table-striped table-sm" *ngIf="po">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Zip</th>
+                        <th>PO Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{po.vendor.name}}</td>
+                        <td>{{po.vendor.address}}</td>
+                        <td>{{po.vendor.city}}</td>
+                        <td>{{po.vendor.state}}</td>
+                        <td>{{po.vendor.zip}}</td>
+                        <td>{{po.poTotal |currency}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr>
+        <div id="polines">
+            <table class="table table-striped table-sm" *ngIf="po">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Line Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of po.polines">
+                        <td>{{p.product}}</td>
+                        <td>{{p.quantity}}</td>
+                        <td>{{p.price |currency}}</td>
+                        <td>{{p.lineTotal |currency}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <div>
+        <app-foot></app-foot>
+    </div>
+</div>

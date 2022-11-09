@@ -31,6 +31,7 @@ import { RequestReviewDetailComponent } from './request/request-review-detail/re
 import { RequestLineListComponent } from './requestline/requestline-list/requestline-list.component';
 import { RequestLineCreateComponent } from './requestline/requestline-create/requestline-create.component';
 import { RequestLineChangeComponent } from './requestline/requestline-change/requestline-change.component';
+import { VendorPoComponent } from './vendor/vendor-po/vendor-po.component';
 
 const routes: Routes = [
   { path:"", redirectTo:"/user/login", pathMatch:"full"},
@@ -45,6 +46,8 @@ const routes: Routes = [
   { path:"vendor/create", component: VendorCreateComponent},
   { path:"vendor/detail/:id", component: VendorDetailComponent},
   { path:"vendor/change/:id", component: VendorChangeComponent},
+
+  { path:"vendor/po/:id", component: VendorPoComponent},
 
   { path:"product/list", component: ProductListComponent},
   { path:"product/create", component: ProductCreateComponent},
