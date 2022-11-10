@@ -3,8 +3,8 @@
         <app-head [pageTitle]="pageTitle"></app-head>
     </div>
 
-    <main id="main">
-        <a routerLink="/product/create">Create New</a>
+    <main *ngIf="prods" id="main">
+        <a *ngIf="isAdmin" routerLink="/product/create">Create New</a>
         <table class="table table-striped table-sm">
             <thead>
                 <tr>
@@ -17,7 +17,7 @@
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody *ngIf="prods">
+            <tbody>
                 <tr *ngFor="let p of prods">
                     <td>{{p.id}}</td>
                     <td>{{p.partNbr}}</td>
@@ -26,8 +26,9 @@
                     <td>{{p.unit}}</td>
                     <td>{{p.vendor.name}}</td>
                     <td>
-                        <a routerLink="/product/detail/{{p.id}}">Detail</a> |
-                        <a routerLink="/product/change/{{p.id}}">Edit</a>
+                        <a routerLink="/product/detail/{{p.id}}">Detail</a>
+                        <span *ngIf="isAdmin"> | </span>
+                        <a *ngIf="isAdmin" routerLink="/product/change/{{p.id}}">Edit</a>
                     </td>
                 </tr>
             </tbody>

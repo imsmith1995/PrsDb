@@ -36,9 +36,12 @@
                 </tr>
             </tbody>
         </table>
-        <button (click)="toProductChangePage()" class="btn btn-primary">Edit</button> |
-        <button (click)="toggleVerifyDelete()" class="btn btn-danger">Delete</button> |
-        <button (click)="remove()" class="{{verifyDeleteButtonColor}}" [disabled]="verifyDeleteButton">Verify Delete</button>
+        <a *ngIf="!isAdmin" routerLink="/product/list">Back To Product List</a>
+        <span *ngIf="isAdmin">
+            <button (click)="toProductChangePage()" class="btn btn-primary">Edit</button> |
+            <button (click)="toggleVerifyDelete()" class="btn btn-danger">Delete</button> |
+            <button (click)="remove()" class="{{verifyDeleteButtonColor}}" [disabled]="verifyDeleteButton">Verify Delete</button>
+        </span>
     </main>
 
     <div>

@@ -12,6 +12,7 @@ export class UserListComponent implements OnInit {
 
   pageTitle:string = "User List";
   users: User[] = [];
+  isAdmin: boolean = false;
 
   constructor(
     private sys: SystemService,
@@ -20,6 +21,7 @@ export class UserListComponent implements OnInit {
 
   ngOnInit(): void {
     this.sys.checkLogin();
+    this.isAdmin = this.sys.user.isAdmin;
     this.usersvc.list().subscribe({
       next: (res) => {
         console.debug("Users: ", res);

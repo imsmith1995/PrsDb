@@ -13,6 +13,7 @@ export class VendorDetailComponent implements OnInit {
 
   pageTitle: string = "Vendor Detail";
   ven!: Vendor;
+  isAdmin: boolean = false;
 
   constructor(
     private sys: SystemService,
@@ -47,6 +48,7 @@ export class VendorDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.sys.checkLogin();
+    this.isAdmin = this.sys.user.isAdmin;
     let id = this.route.snapshot.params["id"];
     this.vensvc.get(id).subscribe({
       next: (res) => {

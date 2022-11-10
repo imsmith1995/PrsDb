@@ -14,6 +14,8 @@ export class RequestReviewComponent implements OnInit {
 
   pageTitle: string = "Requests To Review"
   reqs: Request[] = [];
+  noReviewsMessage: string = "There are currently no valid Requests for you to Review"
+  toggleReviewsMessage: boolean = false;
 
   constructor(
     private sys: SystemService,
@@ -28,6 +30,7 @@ export class RequestReviewComponent implements OnInit {
       next: (res) => {
         console.debug("Requests: ", res),
         this.reqs = res;
+        this.checkRequestLength();
       },
       error: (err) => {
         console.error(err);
@@ -35,4 +38,9 @@ export class RequestReviewComponent implements OnInit {
     });
   }
 
+  checkRequestLength(): void {
+    if(this.reqs.length === 0){
+      this.toggleReviewsMessage = true;
+    }
+  }
 }

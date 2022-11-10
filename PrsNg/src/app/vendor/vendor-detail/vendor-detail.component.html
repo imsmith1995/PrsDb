@@ -44,9 +44,12 @@
                 </tr>
             </tbody>
         </table>
-        <button (click)="toVendorChangePage()" class="btn btn-primary">Edit</button> |
-        <button (click)="toggleVerifyButton()" class="btn btn-danger">Delete</button> |
-        <button (click)="remove()" class="{{verifyButtonColor}}" [disabled]="showVerifyButton">Verify Delete</button>
+        <a *ngIf="!isAdmin" routerLink="/vendor/list">Back To Vendor List</a>
+        <span *ngIf="isAdmin">
+            <button (click)="toVendorChangePage()" class="btn btn-primary">Edit</button> |
+            <button (click)="toggleVerifyButton()" class="btn btn-danger">Delete</button> |
+            <button (click)="remove()" class="{{verifyButtonColor}}" [disabled]="showVerifyButton">Verify Delete</button>
+        </span>
     </main>
 
     <div>

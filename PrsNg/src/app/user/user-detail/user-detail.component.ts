@@ -13,7 +13,7 @@ export class UserDetailComponent implements OnInit {
 
   pageTitle: string = "User Detail";
   user!: User;
-  IsDetailPage: boolean = true;
+  isAdmin: boolean = false;
 
 
   constructor(
@@ -49,6 +49,7 @@ export class UserDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.sys.checkLogin();
+    this.isAdmin = this.sys.user.isAdmin;
     let id = this.route.snapshot.params["id"];
     this.usersvc.get(id).subscribe({
       next: (res) => {

@@ -12,6 +12,7 @@ export class VendorListComponent implements OnInit {
 
   pageTitle: string = "Vendor List";
   vens: Vendor[] = [];
+  isAdmin: boolean = false;
 
   constructor(
     private sys: SystemService,
@@ -20,6 +21,7 @@ export class VendorListComponent implements OnInit {
 
   ngOnInit(): void {
     this.sys.checkLogin();
+    this.isAdmin = this.sys.user.isAdmin;
     this.vensvc.list().subscribe({
       next: (res) => {
         console.debug("Vendors:", res);

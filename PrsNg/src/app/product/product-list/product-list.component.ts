@@ -14,6 +14,7 @@ export class ProductListComponent implements OnInit {
 
   pageTitle: string = "Product List";
   prods: Product[] = [];
+  isAdmin: boolean = false;
 
   constructor(
     private sys: SystemService,
@@ -22,6 +23,7 @@ export class ProductListComponent implements OnInit {
 
     ngOnInit(): void {
     this.sys.checkLogin();
+    this.isAdmin = this.sys.user.isAdmin;
     this.prodsvc.list().subscribe({
       next: (res) => {
         console.debug("Products: ", res);

@@ -3,8 +3,8 @@
         <app-head [pageTitle]="pageTitle"></app-head>
     </div>
 
-    <main id="main">
-        <table class="table  table-sm" *ngIf="user">
+    <main *ngIf="user" id="main">
+        <table class="table  table-sm">
             <tbody>
                 <tr>
                     <td>Id</td>
@@ -12,41 +12,44 @@
                 </tr>
                 <tr>
                     <td>User Name</td>
-                    <td><input [(ngModel)]="user.username" type="string" [disabled]="IsDetailPage" size="40"></td>
+                    <td><input [(ngModel)]="user.username" type="string" disabled size="40"></td>
                 </tr>
                 <tr>
                     <td>Password</td>
-                    <td><input [(ngModel)]="user.password" type="password" [disabled]="IsDetailPage" size="40"></td>
+                    <td><input [(ngModel)]="user.password" type="password" disabled size="40"></td>
                 </tr>
                 <tr>
                     <td>First Name</td>
-                    <td><input [(ngModel)]="user.firstname" type="string" [disabled]="IsDetailPage" size="40"></td>
+                    <td><input [(ngModel)]="user.firstname" type="string" disabled size="40"></td>
                 </tr>
                 <tr>
                     <td>Last Name</td>
-                    <td><input [(ngModel)]="user.lastname" type="string" [disabled]="IsDetailPage" size="40"></td>
+                    <td><input [(ngModel)]="user.lastname" type="string" disabled size="40"></td>
                 </tr>
                 <tr>
                     <td>Phone</td>
-                    <td><input [(ngModel)]="user.phone" type="string" [disabled]="IsDetailPage" size="40"></td>
+                    <td><input [(ngModel)]="user.phone" type="string" disabled size="40"></td>
                 </tr>
                 <tr>
                     <td>Email</td>
-                    <td><input [(ngModel)]="user.email" type="string" [disabled]="IsDetailPage" size="40"></td>
+                    <td><input [(ngModel)]="user.email" type="string" disabled size="40"></td>
                 </tr>
                 <tr>
                     <td>Reviewer</td>
-                    <td><input [(ngModel)]="user.isReviewer" type="checkbox" [disabled]="IsDetailPage"></td>
+                    <td><input [(ngModel)]="user.isReviewer" type="checkbox" disabled></td>
                 </tr>
                 <tr>
                     <td>Admin</td>
-                    <td><input [(ngModel)]="user.isAdmin" type="checkbox" [disabled]="IsDetailPage"></td>
+                    <td><input [(ngModel)]="user.isAdmin" type="checkbox" disabled></td>
                 </tr>
             </tbody>
         </table>
-        <button (click)="toUserChangePage()" class="btn btn-primary">Edit</button> |
-        <button (click)="toggleVerifyButton()" class="btn btn-danger">Delete</button> |
+        <a *ngIf="!isAdmin" routerLink="/user/list">Back To User List</a>
+        <span *ngIf="isAdmin">
+            <button (click)="toUserChangePage()" class="btn btn-primary">Edit</button> |
+            <button (click)="toggleVerifyButton()" class="btn btn-danger">Delete</button> |
             <button (click)="remove()" class="{{verifyButtonColor}}" [disabled]="showVerifyButton">Verify Delete</button>
+        </span>
     </main>
 
     <div>

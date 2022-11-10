@@ -18,6 +18,7 @@ export class ProductDetailComponent implements OnInit {
   ven!: Vendor;
   verifyDeleteButton: boolean = true;
   verifyDeleteButtonColor: string = "btn btn-secondary";
+  isAdmin: boolean = false;
 
   constructor(
     private sys: SystemService,
@@ -50,6 +51,7 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.sys.checkLogin();
+    this.isAdmin = this.sys.user.isAdmin;
     let id = this.route.snapshot.params["id"];
     this.prodsvc.get(id).subscribe({
       next: (res) => {
