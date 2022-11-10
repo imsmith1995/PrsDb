@@ -21,3 +21,9 @@ a:hover {
     color: white;
     background-color: black;
 }
+
+#logOutMenu{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}

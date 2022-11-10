@@ -4,6 +4,9 @@
             <li *ngFor="let m of menus">
                 <a routerLink="{{m.route}}">{{m.display}}</a>
             </li>
+            <li>
+                <a id="logOutMenu" routerLink="{{logOutMenu.route}}">{{logOutMenu.display}}</a>
+            </li>
         </ul>
     </nav>
 </div>

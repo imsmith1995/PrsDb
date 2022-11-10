@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { User } from 'src/app/user/user.class';
+import { SystemService } from '../system.service';
 
 @Component({
   selector: 'app-head',
@@ -8,8 +10,11 @@ import { Component, Input, OnInit } from '@angular/core';
 export class HeadComponent implements OnInit {
 
   @Input() pageTitle: string = "No Title";
+  user: User = this.sys.user;
 
-  constructor() { }
+  constructor(
+    private sys: SystemService
+  ) { }
 
   ngOnInit(): void {
   }
