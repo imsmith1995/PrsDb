@@ -10,11 +10,12 @@
                 <td><input [(ngModel)]="password" type="password"></td>
             </tr>
             <tr>
+                <td></td>
                 <td>
                     <button (click)="login()" class="btn btn-primary">Login</button>
                 </td>
             </tr>
         </tbody>
     </table>
-    <span class="text-danger font-italic">{{message}}</span>
+    <span class="text-danger">{{message}}</span>
 </div>

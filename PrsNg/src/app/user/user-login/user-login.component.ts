@@ -26,7 +26,7 @@ export class UserLoginComponent implements OnInit {
       next: (res) => {
         console.debug("User:", res);
         this.sys.user = res;
-        this.router.navigateByUrl("/user/list");
+        this.router.navigateByUrl("/home");
       },
       error: (err) => {
         if(err.status === 404){

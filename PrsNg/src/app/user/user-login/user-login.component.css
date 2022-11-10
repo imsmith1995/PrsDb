@@ -5,3 +5,7 @@ div{
     border-radius: 7px;
     padding: 20px;
 }
+
+button{
+    padding-inline: 20px;
+}

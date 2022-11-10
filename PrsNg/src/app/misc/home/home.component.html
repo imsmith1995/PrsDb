@@ -1,6 +1,25 @@
 <div>
-    <app-head [pageTitle]="pageTitle"></app-head>
-</div>
-<div>
-    <app-foot></app-foot>
+    <div>
+        <app-head [pageTitle]="pageTitle"></app-head>
+    </div>
+
+    <main id="main">
+        <span class="display-6">{{message}}</span>
+        <table>
+            <tr>
+                <td><button (click)="toUsers()" class="btn btn-lg btn-primary custom">Users</button></td>
+                <td><button (click)="toVendors()" class="btn btn-lg btn-primary custom">Vendors</button></td>
+                <td><button (click)="toProducts()" class="btn btn-lg btn-primary custom">Products</button></td>
+            </tr>
+            <tr>
+                <td><button (click)="toRequests()" class="btn btn-lg btn-primary custom">Requests</button></td>
+                <td><button (click)="toReviews()" class="btn btn-lg btn-primary custom">Reviews</button></td>
+                <td><button (click)="toAbout()" class="btn btn-lg btn-primary custom">About</button></td>
+            </tr>
+        </table>
+    </main>
+
+    <div>
+        <app-foot></app-foot>
+    </div>
 </div>
