@@ -19,6 +19,7 @@ export class RequestListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.sys.checkLogin();
     this.reqsvc.list().subscribe({
       next: (res) => {
         console.debug("Vendors:", res);

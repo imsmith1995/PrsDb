@@ -51,6 +51,7 @@ export class RequestLineListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.sys.checkLogin();
     this.refresh();
   }
 

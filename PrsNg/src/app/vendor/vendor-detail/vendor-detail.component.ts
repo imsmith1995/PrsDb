@@ -46,6 +46,7 @@ export class VendorDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.sys.checkLogin();
     let id = this.route.snapshot.params["id"];
     this.vensvc.get(id).subscribe({
       next: (res) => {

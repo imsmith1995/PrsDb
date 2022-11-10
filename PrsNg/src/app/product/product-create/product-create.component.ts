@@ -38,6 +38,7 @@ export class ProductCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.sys.checkLogin();
     this.getAllVendors();
   }
 

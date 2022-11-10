@@ -22,6 +22,7 @@ export class VendorPoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.sys.checkLogin();
     let id = this.route.snapshot.params["id"];
     this.vensvc.vendorPO(id).subscribe({
       next: (res) => {

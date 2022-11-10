@@ -39,6 +39,7 @@ export class RequestLineCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.sys.checkLogin();
     this.getAllProducts();
     let requestId = this.route.snapshot.params["id"];
     this.reqln.requestId = +requestId;

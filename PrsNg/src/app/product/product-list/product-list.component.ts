@@ -21,6 +21,7 @@ export class ProductListComponent implements OnInit {
   ) { }
 
     ngOnInit(): void {
+    this.sys.checkLogin();
     this.prodsvc.list().subscribe({
       next: (res) => {
         console.debug("Products: ", res);

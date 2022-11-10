@@ -55,6 +55,7 @@ export class RequestReviewDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.sys.checkLogin();
     this.getRequestAndRequestLines();
   }
 

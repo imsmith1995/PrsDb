@@ -20,9 +20,6 @@ export class VendorCreateComponent implements OnInit {
     private router: Router,
   ) { }
 
-  ngOnInit(): void {
-  }
-
   save(): void {
     this.vensvc.create(this.ven).subscribe({
       next: (res) => {
@@ -33,6 +30,10 @@ export class VendorCreateComponent implements OnInit {
         console.error(err);
       }
     });
+  }
+  
+  ngOnInit(): void {
+    this.sys.checkLogin();
   }
 
 }

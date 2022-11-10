@@ -38,6 +38,7 @@ export class RequestLineChangeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.sys.checkLogin();
     this.getAllProducts();
     let id = this.route.snapshot.params["id"];
     this.reqlnsvc.get(id).subscribe({
